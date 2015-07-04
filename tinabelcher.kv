@@ -1,0 +1,71 @@
+#:kivy 1.0.9
+
+<Runner>:
+    image: imag
+    size: 200, 200
+    size_hint: (1,1)
+
+    Image:
+        id: imag
+        size: self.parent.size
+        pos: self.parent.pos
+        source: 'cat.zip'
+        anim_delay: 1.0 / 60
+
+
+<Collectible>:
+    image: img
+    size: 35, 35
+    size_hint: (1,1)
+
+    Image:
+        id: img
+        size: self.parent.size
+        pos: self.parent.pos
+        source: 'fishbone.png'
+
+
+<TinaBelcherGame>:
+    bg: imag
+    bg2: imag2
+    bg3: imag3
+    end_label: game_over_label
+
+    Image:
+        id: imag
+        pos: self.parent.pos
+        size: self.parent.width, self.parent.height
+        allow_stretch: True
+        source: 'background.png'
+        on_touch_down: root.parent.parent.parent.currentObj = self
+        anim_delay: 1.0 / 10
+
+    Image:
+        id: imag2
+        size: self.parent.width, self.parent.height
+        allow_stretch: True
+        source: 'background.png'
+        on_touch_down: root.parent.parent.parent.currentObj = self
+        anim_delay: 1.0 / 10
+
+    Image:
+        id: imag3
+        size: self.parent.width, self.parent.height
+        allow_stretch: True
+        source: 'background.png'
+        on_touch_down: root.parent.parent.parent.currentObj = self
+        anim_delay: 1.0 / 10
+
+    Label:
+        font_size: 62
+        center_x: root.width / 2
+        top: root.top - 30
+        text: str(root.score)
+
+    Label:
+        id: game_over_label
+        text: ""
+        color: 0,0,0,1
+        font_size: 100
+        center_x: root.width / 2
+        center_y: root.height / 2
